@@ -1,11 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <iostream>
+#include <string>
 
 class Graph {
 private:
     std::vector<std::vector<int>> adjMatrix;  // Adjacency matrix
     int numVertices;                          // Number of vertices
-    std::vector<std::list<int>> adjList        //Adjacence 
+    std::vector<std::list<int>> adjList       // Adjacence 
 
 public:
     // Constructor
@@ -28,5 +31,8 @@ public:
 
     // Clear the graph by resetting the adjacency matrix
     void clearGraph();
+
+    // Read a graph from a PACE Challenge file 
+    void fromFile(string filename)
 };
 

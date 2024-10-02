@@ -1,0 +1,16 @@
+glouton :
+	chercher une forêt au lieu d'un FVS
+
+	x1, …, xn an ordering of the vertices
+	F = {}
+	for i in [1..n]:
+		if F cup {xi} is a forest:
+			F <- F cup {xi}
+	return F
+
+F cup {xi} is a forest ssi xi n'a pas 2 voisins dans la même cc de F
+	=> complexité O(|E|)?
+
+ordering ideas:
+
+	-degré décroissant
