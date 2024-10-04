@@ -1,7 +1,11 @@
+add_library(FVS_graph)
+target_sources(FVS_graph PRIVATE
+    graph.cpp)
+
 add_executable(FVS_main)
-target_sources(TravelingSalesmanSolver_main PRIVATE
+target_sources(FVS_main PRIVATE
     main.cpp)
 target_link_libraries(FVS_main PUBLIC
-    Boost::program_options)
-set_target_properties(TravelingSalesmanSolver_main PROPERTIES OUTPUT_NAME "FVS")
-install(TARGETS FVS_main)
+    FVS_graph)
+
+

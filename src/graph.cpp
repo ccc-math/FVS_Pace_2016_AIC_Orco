@@ -26,7 +26,7 @@ void Graph::removeEdge(int u, int v) {
                 adjMatrix[u][v] = 0;
                 adjList[u].remove(u);
             }
-                a
+        
         } else {
             std::cout << "Invalid vertex!" << std::endl;
         }
@@ -61,7 +61,7 @@ void Graph::clearGraph() {
 
 
 // Probably hella bugged, to discuss
-Graph Graph::fromFile(string filename){
+Graph::Graph(std::string filename){
     // Open filename
     ifstream inputFile(filename);
 
@@ -75,12 +75,14 @@ Graph Graph::fromFile(string filename){
     string line;
     // Read a new line until EOF
     while (getline(inputFile, line)) {
+        //std::cout<<"oi"<<std::endl;
         // Split the line 
-        string node1 = "";
-        string node2 = "";
-        cpt = 0;
-        while(line[i] != " "){
-            node1 = node1 + line[i];
+        std::string node1 = "";
+        std::string node2 = "";
+        int cpt = 0;
+
+        while(line[cpt] != ' '){
+            node1 = node1 + line[cpt];
             cpt++;
         }
         cpt++;
@@ -88,8 +90,8 @@ Graph Graph::fromFile(string filename){
             node2 = node2 + line[cpt];
             cpt++;
         }
-        int n1 = int(node1);
-        int n2 = int(node2);
+        int n1 = stoi(node1);
+        int n2 = stoi(node2);
         if(max(n1, n2) > size){
             size = max(n1, n2);
         } 
@@ -98,9 +100,11 @@ Graph Graph::fromFile(string filename){
     // Close the file
     inputFile.close();
     // We now construct the graph
-    Graph G = Graph(size);
+    numVertices = size;
+    adjMatrix.resize(size, std::vector<int>(size, 0));
+    adjList.resize(size,std::list<int>());
     for(int i = 0; i < edges.size(); i++){
-        G.addEdge(edges[i][0] - 1, edges[i][1] - 1); // Note: names int the instance files start from 1, but our indices start from 0
+        this->addEdge(edges[i][0] - 1, edges[i][1] - 1); // Note: names int the instance files start from 1, but our indices start from 0
     } 
-    return G;
+    
 };

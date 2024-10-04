@@ -3,12 +3,12 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-
+#include <list>
 class Graph {
 private:
     std::vector<std::vector<int>> adjMatrix;  // Adjacency matrix
     int numVertices;                          // Number of vertices
-    std::vector<std::list<int>> adjList       // Adjacence 
+    std::vector<std::list<int>> adjList;       // Adjacence 
 
 public:
     // Constructor
@@ -33,6 +33,6 @@ public:
     void clearGraph();
 
     // Read a graph from a PACE Challenge file 
-    void fromFile(string filename)
+    Graph(std::string filename);
 };
 
