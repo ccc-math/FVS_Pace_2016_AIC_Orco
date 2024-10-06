@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
+  "../bin/FVS_main"
+  "../bin/FVS_main.pdb"
   "CMakeFiles/FVS_main.dir/main.cpp.o"
   "CMakeFiles/FVS_main.dir/main.cpp.o.d"
-  "FVS_main"
-  "FVS_main.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

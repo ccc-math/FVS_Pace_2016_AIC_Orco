@@ -1,14 +1,14 @@
 [
 {
   "directory": "/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src",
-  "command": "/usr/bin/c++   -std=gnu++14 -o CMakeFiles/FVS_graph.dir/graph.cpp.o -c /home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/graph.cpp",
-  "file": "/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/graph.cpp",
-  "output": "src/CMakeFiles/FVS_graph.dir/graph.cpp.o"
-},
-{
-  "directory": "/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src",
-  "command": "/usr/bin/c++   -std=gnu++14 -o CMakeFiles/FVS_main.dir/main.cpp.o -c /home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/main.cpp",
+  "command": "/usr/bin/c++  -I/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/include -std=gnu++14 -o CMakeFiles/FVS_main.dir/main.cpp.o -c /home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/main.cpp",
   "file": "/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/main.cpp",
   "output": "src/CMakeFiles/FVS_main.dir/main.cpp.o"
+},
+{
+  "directory": "/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/Graph",
+  "command": "/usr/bin/c++  -I/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/include -std=gnu++14 -o CMakeFiles/FVS_graph.dir/graph.cpp.o -c /home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/Graph/graph.cpp",
+  "file": "/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/Graph/graph.cpp",
+  "output": "src/Graph/CMakeFiles/FVS_graph.dir/graph.cpp.o"
 }
 ]

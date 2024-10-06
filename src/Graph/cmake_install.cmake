@@ -1,4 +1,4 @@
-# Install script for directory: /home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src
+# Install script for directory: /home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/Graph
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,10 +40,5 @@ endif()
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/cc/Orco/Academic_Open_Challenges/FVS_Pace_2016_AIC_Orco/src/Graph/cmake_install.cmake")
 endif()
 

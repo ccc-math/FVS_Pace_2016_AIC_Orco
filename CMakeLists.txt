@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 # Enable output of compile commands during generation.
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # Add sub-directories.
 add_subdirectory(extern)
 add_subdirectory(src)

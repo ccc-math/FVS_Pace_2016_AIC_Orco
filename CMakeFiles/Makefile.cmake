@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeLists.txt"
   "extern/CMakeLists.txt"
   "src/CMakeLists.txt"
+  "src/Graph/CMakeLists.txt"
   "test/CMakeLists.txt"
   "/snap/cmake/1415/share/cmake-3.30/Modules/CMakeCXXInformation.cmake"
   "/snap/cmake/1415/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
@@ -43,11 +44,12 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "extern/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/Graph/CMakeFiles/CMakeDirectoryInformation.cmake"
   "test/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "src/CMakeFiles/FVS_graph.dir/DependInfo.cmake"
   "src/CMakeFiles/FVS_main.dir/DependInfo.cmake"
+  "src/Graph/CMakeFiles/FVS_graph.dir/DependInfo.cmake"
   )
