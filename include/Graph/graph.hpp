@@ -8,7 +8,7 @@ class Graph {
 private:
     std::vector<std::vector<int>> adjMatrix;  // Adjacency matrix
     int numVertices;                          // Number of vertices
-    std::vector<std::list<int>> adjList;       // Adjacence 
+    std::vector<std::vector<int>> adjList;    // Adjacence 
 
 public:
     // Constructor
@@ -18,7 +18,7 @@ public:
     void addEdge(int u, int v);
 
     // Remove an edge between vertex u and vertex v
-    void removeEdge(int u, int v);
+    //void removeEdge(int u, int v);
 
     // Check if an edge exists between vertex u and vertex v
     bool hasEdge(int u, int v) ;
@@ -34,5 +34,9 @@ public:
 
     // Read a graph from a PACE Challenge file 
     Graph(std::string filename);
+
+    // Getter 
+    int getNumVertices();
+    std::vector<int> getNeighbours(int v);
 };
 
