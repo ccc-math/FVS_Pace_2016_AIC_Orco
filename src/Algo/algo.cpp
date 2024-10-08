@@ -15,7 +15,7 @@ int findSet(vector<int> &disjointSet, int i){
 		cerr << "Element in no set " << endl;
         exit ( EXIT_FAILURE );
 	}
-	if(disjointSet[i] = i){
+	if(disjointSet[i] == i){
 		return i;
 	}
 	else{
@@ -53,7 +53,7 @@ void unionSet(vector<int> &disjointSet, vector<int> &height, int i, int j){
 
 
 std::vector<int> greedy(Graph G){
-	std::vector<int> FVS = {};
+	vector<int> FVS = {};
 	vector<int>disjointSet = vector<int>(G.getNumVertices(), -1); // at the beginning, no class
 	vector<int>height = vector<int>(G.getNumVertices(), 0); 
 	
@@ -63,11 +63,11 @@ std::vector<int> greedy(Graph G){
 		// we look at the neighbours of i
 		for(int j = 0; j < G.getNeighbours(i).size() && flag; j++){
 			int neighbour = G.getNeighbours(i)[j];
-			int neighbour_color = findSet(disjointSet, neighbour);
-			if(neighbour_color >= 0){ // if the neighbour has been colored
-				for(int k = 0; k < colorsInNeighbourhood.size(); k++){ // we check if the color has already be seen
+			if(disjointSet[neighbour] >= 0){// if the neighbour has been colored
+				int neighbour_color = findSet(disjointSet, neighbour);
+				for(int k = 0; k < colorsInNeighbourhood.size(); k++){ 	// we check if the color has already be seen
 					if(colorsInNeighbourhood[k] == neighbour_color){
-						flag = false;                           // in which case we stop
+						flag = false;                           		// in which case we stop
 						FVS.push_back(i);
 						break;
 					}
@@ -77,8 +77,8 @@ std::vector<int> greedy(Graph G){
 		}
 		// if i is not in the FVS, we have to update the color classes
 		if(flag){
-			disjointSet[i] == i;
-			height[i] == 1;
+			disjointSet[i] = i;
+			height[i] = 1;
 			// if i connects its neighbours trees
 			for(int k = 0; k < colorsInNeighbourhood.size(); k++){
 				unionSet(disjointSet, height, colorsInNeighbourhood[k], i);
