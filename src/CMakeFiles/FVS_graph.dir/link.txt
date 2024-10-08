@@ -1,2 +1,0 @@
-/usr/bin/ar qc libFVS_graph.a CMakeFiles/FVS_graph.dir/graph.cpp.o
-/usr/bin/ranlib libFVS_graph.a
