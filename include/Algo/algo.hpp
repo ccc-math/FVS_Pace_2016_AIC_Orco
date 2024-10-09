@@ -4,4 +4,4 @@
 #include <vector>
 
 // first version of a greedy algorthm
-std::vector<int> greedy(Graph G);
+std::vector<int> greedy(Graph &G);
