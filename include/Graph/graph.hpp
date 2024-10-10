@@ -1,3 +1,7 @@
+#ifndef GRAPH_H
+#define GRAPH_H
+
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -39,4 +43,7 @@ public:
     int getNumVertices();
     std::vector<int> getNeighbours(int v);
 };
+
+
+#endif
 

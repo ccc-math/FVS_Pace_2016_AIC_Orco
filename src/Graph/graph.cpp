@@ -49,11 +49,12 @@ Graph::Graph(std::string filename){
     // Close the file
     file.close();
     // We now construct the graph
+    size = size + 1;
     numVertices = size;
     adjMatrix.resize(size, std::vector<int>(size, 0));
     adjList.resize(size, {});
     for(int i = 0; i < edges.size(); i++){
-        this->addEdge(edges[i][0] - 1, edges[i][1] - 1); // Note: names int the instance files start from 1, but our indices start from 0
+        this->addEdge(edges[i][0], edges[i][1]); // Note: names int the instance files start from 1, but our indices start from 0
     } 
     
 };

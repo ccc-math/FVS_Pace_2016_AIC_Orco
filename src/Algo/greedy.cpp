@@ -58,21 +58,21 @@ std::vector<int> greedy(Graph &G){
 	vector<int>height = vector<int>(G.getNumVertices(), 0); 
 	
 	for(int i = 0; i < G.getNumVertices(); i++){
-		vector<int>colorsInNeighbourhood = {}; 			// we store the colored neighbour of i        NOTE: should be better with a set data structure
+		set<int> colorsInNeighbourhood;
+		//vector<int>colorsInNeighbourhood = {}; 			// we store the colored neighbour of i        NOTE: should be better with a set data structure
 		bool flag = true; 								// stopping contidion
 		// we look at the neighbours of i
 		for(int j = 0; j < G.getNeighbours(i).size() && flag; j++){
 			int neighbour = G.getNeighbours(i)[j];
-			if(disjointSet[neighbour] >= 0){// if the neighbour has been colored
+			// if the neighbour has been colored :
+			if(disjointSet[neighbour] >= 0){
 				int neighbour_color = findSet(disjointSet, neighbour);
-				for(int k = 0; k < colorsInNeighbourhood.size(); k++){ 	// we check if the color has already be seen
-					if(colorsInNeighbourhood[k] == neighbour_color){
-						flag = false;                           		// in which case we stop
-						FVS.push_back(i);
-						break;
-					}
+				// we check if we've already stored its color
+				if(colorsInNeighbourhood.count(neighbour_color) != 0){
+					flag = false;                           		// in which case we stop
+					FVS.push_back(i);
 				}
-				colorsInNeighbourhood.push_back(neighbour_color); // otw we store it 
+				colorsInNeighbourhood.insert(neighbour_color);
 			}
 		}
 		// if i is not in the FVS, we have to update the color classes
@@ -80,9 +80,9 @@ std::vector<int> greedy(Graph &G){
 			disjointSet[i] = i;
 			height[i] = 1;
 			// if i connects its neighbours trees
-			for(int k = 0; k < colorsInNeighbourhood.size(); k++){
-				unionSet(disjointSet, height, colorsInNeighbourhood[k], i);
-			}	
+			for(auto color : colorsInNeighbourhood){
+				unionSet(disjointSet, height, color, i);
+			}
 		}
 	}
 	return FVS;
@@ -90,10 +90,3 @@ std::vector<int> greedy(Graph &G){
 
 
 
-
-/*
-TODO :  run and debug
-		try with colorsInNeighbourhood as a set 
-		think about updating height in find
-
-*/
