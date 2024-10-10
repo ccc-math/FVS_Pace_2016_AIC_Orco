@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 //#include "Graph/graph.hpp"
-#include "Algo/algo.hpp"
+#include "Algo/greedy.hpp"
 int main() {
     
     Graph G("../data/instances_maison/testGreedyFvs.graph");

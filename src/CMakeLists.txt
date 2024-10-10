@@ -3,11 +3,11 @@ add_subdirectory(Algo)
 
 
 
-add_executable(FVS_main)
-target_sources(FVS_main PRIVATE
+add_executable(fvs_main)
+target_sources(fvs_main PRIVATE
     main.cpp)
-target_link_libraries(FVS_main PUBLIC
-    FVS_graph
-    FVS_algo)
+target_link_libraries(fvs_main PUBLIC
+    fvs_graph
+    fvs_greedy)
 
 

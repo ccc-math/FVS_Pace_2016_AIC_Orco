@@ -1,4 +1,4 @@
-#include "Algo/algo.hpp"
+#include "Algo/greedy.hpp"
 using namespace std;
 // NOTE : the union find structure is just a vector yet, maybe it should be a class !!!!!!!!!!!!!!!!!!!!!!!
 
