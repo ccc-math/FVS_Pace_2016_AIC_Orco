@@ -6,6 +6,7 @@ Graph::Graph(int vertices) {
         numVertices = vertices;
         adjMatrix.resize(vertices, std::vector<int>(vertices, 0));
         adjList.resize(vertices, {}); // graph with no edge
+        selfLoops = {};
 };
 
 
@@ -56,7 +57,6 @@ Graph::Graph(std::string filename){
     for(int i = 0; i < edges.size(); i++){
         this->addEdge(edges[i][0], edges[i][1]); // Note: names int the instance files start from 1, but our indices start from 0
     } 
-    
 };
 
 
@@ -64,8 +64,13 @@ void Graph::addEdge(int u, int v) {
         if (u >= 0 && u < numVertices && v >= 0 && v < numVertices) {
             adjMatrix[u][v] = 1;
             adjMatrix[v][u] = 1;
-            adjList[u].push_back(v);
-            adjList[v].push_back(u);
+            if(v != u){
+                adjList[u].push_back(v);
+                adjList[v].push_back(u);
+            }
+            else{
+                selfLoops.push_back(u);
+            }
         } else {
             std::cout << "Invalid vertex!" << std::endl; //Error
             exit ( EXIT_FAILURE );
@@ -75,18 +80,35 @@ void Graph::addEdge(int u, int v) {
 /*
 void Graph::removeEdge(int u, int v) {
         if (u >= 0 && u < numVertices && v >= 0 && v < numVertices) {
-            if(adjMatrix[u][v]==1 && adjMatrix[v][u]==1){
-                adjMatrix[u][v] = 0;
                 adjList[u].remove(v);
                 adjList[v].remove(u);
-            }
         
         } else {
             std::cout << "Invalid vertex!" << std::endl;
             exit ( EXIT_FAILURE );
         }
-    };
+};
 */
+
+int findPosElement(int e, vector<int> v){ // return the first position of an element in a vector
+    for(int i = 0; i < v.size(); i++){
+        if(e == v[i])
+            return i;
+    }
+    return -1;
+}
+
+void Graph::disconnectVertex(int u){  // Delete all the edges aroud u
+    for(int v : this->getNeighbours(u)){
+        int pos = findPosElement(u, this->getNeighbours(v)); // locate u in the adj list of v
+        if (pos >= 0){
+          std::swap(adjList[v][pos], adjList[v][adjList[v].size() - 1]);
+          adjList[v].pop_back();
+        }
+    } 
+    adjList[u] = {};
+}
+
 bool Graph::hasEdge(int u, int v) {
         if (u >= 0 && u < numVertices && v >= 0 && v < numVertices) {
             return adjMatrix[u][v] == 1;
@@ -95,10 +117,19 @@ bool Graph::hasEdge(int u, int v) {
     };
 
 void Graph::printGraph_console() {
-        std::cout << "Adjacency Matrix:" << std::endl;
+        std::cout << "Adjacency list:" << std::endl;
+        /*
         for (int i = 0; i < numVertices; ++i) {
             for (int j = 0; j < numVertices; ++j) {
                 std::cout << adjMatrix[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+        */
+        for (int i = 0; i < numVertices; ++i){
+            std::cout << i << " :";
+            for(int e : adjList[i]){
+                std::cout << " " << e;
             }
             std::cout << std::endl;
         }
@@ -121,6 +152,10 @@ int Graph::getNumVertices(){
 
 std::vector<int> Graph::getNeighbours(int v){
     return this->adjList[v];
+};
+
+std::vector<int> Graph::getSelfLoops(){
+    return this->selfLoops;
 }
 
 

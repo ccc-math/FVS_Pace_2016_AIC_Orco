@@ -13,6 +13,7 @@ private:
     std::vector<std::vector<int>> adjMatrix;  // Adjacency matrix
     int numVertices;                          // Number of vertices
     std::vector<std::vector<int>> adjList;    // Adjacence 
+    std::vector<int> selfLoops;               // List of vertices with self loops
 
 public:
     // Constructor
@@ -24,8 +25,11 @@ public:
     // Remove an edge between vertex u and vertex v
     //void removeEdge(int u, int v);
 
+    // Delete all the edges with u as an endpoint
+    void disconnectVertex(int u);
+
     // Check if an edge exists between vertex u and vertex v
-    bool hasEdge(int u, int v) ;
+    bool hasEdge(int u, int v);
 
     // Print the adjacency matrix
     void printGraph_console();
@@ -42,6 +46,7 @@ public:
     // Getter 
     int getNumVertices();
     std::vector<int> getNeighbours(int v);
+    std::vector<int> getSelfLoops();
 };
 
 

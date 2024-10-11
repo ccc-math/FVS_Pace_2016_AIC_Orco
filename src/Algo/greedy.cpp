@@ -53,6 +53,11 @@ void unionSet(vector<int> &disjointSet, vector<int> &height, int i, int j){
 
 
 std::vector<int> greedy(Graph &G){
+	/*
+	
+	G MUST HAVE NO SELF LOOP
+
+	*/
 	vector<int> FVS = {};
 	vector<int>disjointSet = vector<int>(G.getNumVertices(), -1); // at the beginning, no class
 	vector<int>height = vector<int>(G.getNumVertices(), 0); 

@@ -10,7 +10,7 @@
 
 
 // A first simple kernel
-Graph simple_kernel(Graph &G);
+void simple_kernel(Graph &G, std::vector<int>&FVS);
 
 
 
