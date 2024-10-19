@@ -18,6 +18,9 @@ private:
 public:
     // Constructor
     Graph(int vertices);
+    // Read a graph from a PACE Challenge file 
+    Graph(std::string filename);
+
 
     // Add an edge between vertex u and vertex v
     void addEdge(int u, int v);
@@ -39,9 +42,6 @@ public:
 
     // Clear the graph by resetting the adjacency matrix
     void clearGraph();
-
-    // Read a graph from a PACE Challenge file 
-    Graph(std::string filename);
 
     // Getter 
     int getNumVertices();
