@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.20.1)
+cmake_minimum_required(VERSION 3.30.1)
 
 project(FVS LANGUAGES CXX)
 
@@ -6,7 +6,7 @@ project(FVS LANGUAGES CXX)
 # Require C++14.
 set(CMAKE_CXX_STANDARD 14)
 
-#cmake_policy(SET CMP0135 NEW)
+cmake_policy(SET CMP0135 NEW)
 
 # Enable output of compile commands during generation.
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
