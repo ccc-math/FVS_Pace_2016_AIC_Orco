@@ -52,7 +52,9 @@ int main() {
 
     std::cout << std::endl;
     
-    EL.deleteEdge(1,2);
+    int edgeweight = EL.deleteEdge(1,2);
+    std::cout<< edgeweight << std::endl;
+    std::cout<< EL.deleteEdge(5, 6) << std::endl;
     EL.printEdgeList();
 
     std::cout << std::endl;
@@ -60,11 +62,27 @@ int main() {
     Graph G("../data/instances_maison/3.graph");
     Multigraph MG(G);
     MG.printMultigraph();
+
+    std::cout << std::endl;
     
+    MG.deleteVertex(0);
+    MG.deleteVertex(1);
+    MG.deleteVertex(2);
+    MG.deleteVertex(3);
+    MG.deleteVertex(4);
+    MG.deleteVertex(5);
+    MG.deleteVertex(10);
+    MG.printMultigraph();
 
+    std::cout << std::endl;
 
-
-
+    //MG.addEdge(8, 9);
+    MG.addEdge(6, 9);
+    MG.addEdge(6, 9);
+    MG.addEdge(9, 6);
+    MG.addEdge(9, 6);
+    MG.addEdge(9, 6);
+    MG.printMultigraph();
 
 
 

@@ -67,37 +67,74 @@ void Edge::dicrWeight(){// weight--
         head = newNode;
     };
 
-    void EdgeLinkedList::deleteEdge(int u, int v){
+    int EdgeLinkedList::deleteEdge(int u, int v){
+        /*
+        delete an edge and return its multiplicity (0 if no edge)
+        */
         Node* node = head;
-        if(node != NULL){
+        if(node != NULL){ 
             if(node->edge.isAdjacent(u) && node->edge.isAdjacent(v)){
-                //delete node->edge;
                 head = node->next;
+                int res = node->edge.getWeight();
+                //delete node;
+                return res;
             }
             else{
                 Node* nextNode = node->next;
-                bool flag = true;
-                while(nextNode != NULL && flag){
+                while(nextNode != NULL){
                     if(nextNode->edge.isAdjacent(u) && nextNode->edge.isAdjacent(v)){
-                        //delete nextNode->edge;
                         node->next = nextNode->next;
-                        flag = false;
+                        int res = nextNode->edge.getWeight();
+                        //delete nextNode;
+                        return res;
                     }
                     else{
                         node = nextNode;
+                        nextNode = nextNode->next;
                     }
-                }
-                if(flag){
-                    std::cout << "edge " << u << " " << v << " not in edgelist" << std::endl;
-                    exit ( EXIT_FAILURE );
                 }
             }
         }
-        else{
-            std::cout << "edgelist is empty" << std::endl;
-            exit (EXIT_FAILURE);
-        }
+        return 0;
     };
+
+    void EdgeLinkedList::addEdge(int u, int v){    // NOTE : à recoder ça a l'air horrible
+        Node* node = head;
+        if(node == NULL){
+            std::cout << "1 \n";
+            Edge e(u, v, 1);
+            Node* newNode = new Node(e);
+            head = newNode;
+        }
+        else{
+            if(node->edge.isAdjacent(u) && node->edge.isAdjacent(v)){
+                node->edge.incrWeight();
+                    return;
+            }
+            else{
+                while(node->next != NULL){
+                    std::cout << "é \n";
+                    node->edge.printEdge();
+                    if(node->edge.isAdjacent(u) && node->edge.isAdjacent(v)){
+                        node->edge.incrWeight();
+                        return;
+                    }
+                    else{
+                        node = node->next;
+                    }
+                }
+            }
+            if(node->edge.isAdjacent(u) && node->edge.isAdjacent(v)){
+                node->edge.incrWeight();
+                    return;
+            }
+            std::cout << "2 \n";
+            Edge e(u, v, 1);
+            Node* newNode = new Node(e);
+            node->next = newNode;         
+        }
+    }
+
 
     // returns the edge u v from a list of edges
     Node* EdgeLinkedList::findEdge(int u, int v){
@@ -139,6 +176,8 @@ void Edge::dicrWeight(){// weight--
 // Methods for the multigraph class
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
+
+
 
 ///////////////////
 ///////////////////
@@ -204,6 +243,48 @@ void Multigraph::printMultigraph(){
         }
     }
 };
+
+
+void Multigraph::deleteVertex(int u){
+    /*
+    delete the vertex u in the graph
+    -> delete u from the set of vertices
+    -> delete every edge adjacent to u
+    -> delete the self loop uu if it exists
+    */
+    while(adjList[u].getHead() != NULL){
+        Edge e = adjList[u].getHead()->edge;
+        int nei = e.getU();
+        if(nei == u){
+            nei = e.getV();
+        }
+        adjList[nei].deleteEdge(nei, u);
+        adjList[u].deleteEdge(u, nei);
+    }
+    adjList.erase(u);
+    for(int i = 0; i < selfLoops.size(); i++){
+        if(selfLoops[i] == u){
+            swap(selfLoops[i], selfLoops[selfLoops.size() - 1]);
+            selfLoops.pop_back();
+        }
+    }
+};
+
+
+void Multigraph::addEdge(int u, int v){
+    /*
+    add the edge uv, or increase its multiplicity if uv already exists
+
+    NOTE : can be made faster by looking for uv int the edgelist of u/v with the lowest degree
+    */
+    std::cout << "a\n";
+    adjList[u].addEdge(u, v);
+    std::cout << "b\n";
+    adjList[v].addEdge(u, v);
+
+
+};
+
 
 
 

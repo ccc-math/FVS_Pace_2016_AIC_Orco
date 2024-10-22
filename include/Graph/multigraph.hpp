@@ -52,7 +52,8 @@ public:
 
     // Methods
     void push_front(Edge e);
-    void deleteEdge(int u, int v);
+    int deleteEdge(int u, int v);           // delete edge uv if it exists and returnes the multiplicity (0 otherwise)
+    void addEdge(int u, int v);             // add edge uv, or icrease multiplicity if uv already exists
     Node* findEdge(int u, int v);
     void printEdgeList();
 
@@ -85,7 +86,9 @@ public:
     ///////////////////
     ///////////////////
     void printMultigraph();
-    void disconnectVertex(int v);
+    void deleteVertex(int u);
+    void addEdge(int u, int v);
+
     std::vector<int> simpleKernel(); // reduce the multi graph and return a list of vertices that must be in the MFVS 
 
 
